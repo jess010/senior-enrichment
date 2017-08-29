@@ -12,7 +12,14 @@ module.exports = db.define('Campus', {
   image: {
     type: Sequelize.TEXT,
     validation: {
-        isURL: true
+        isURL: true,
     }
+  },
+
+  date_opened: {
+    type: Sequelize.DATE,
+    validation: {
+      isDate: true,
+    },
   }
 })

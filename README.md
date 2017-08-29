@@ -4,19 +4,19 @@ Make a thing!
 
 ## Getting started
 
-1. Fork and clone this repo
-2. *Set the name of your project in `package.json`*. The skeleton intentionally ships with an invalid name.
-3. `npm install`
-4. Check out the mock-view in the `wireframes` folder
-5. Start the build process with: `npm run build-watch`
-6. In another terminal, start your app with `npm start`
-7. If you navigate to the URL you should see some UI already :) [We already have some connection code to get you started]
+~~1. Fork and clone this repo~~
+~~2. *Set the name of your project in `package.json`*. The skeleton intentionally ships with an invalid name.~~
+~~3. `npm install`~~
+~~4. Check out the mock-view in the `wireframes` folder~~
+~~5. Start the build process with: `npm run build-watch`~~
+~~6. In another terminal, start your app with `npm start`~~
+~~7. If you navigate to the URL you should see some UI already :) [We already have some connection code to get you started]~~
 
 ## Requirements
 
 ### The Premise
 
-You are the CTO of the Margaret Hamilton Interplanetary Academy of JavaScript. Create a RESTful web platform that allows you to manage your students and campuses.
+You are the CTO of the Milky Way Maker Camp for JavaScript NinJ's. Create a RESTful web platform that allows you to manage your students and campuses.
 
 ### The tools
 
@@ -24,13 +24,13 @@ Use at least sequelize, express, react, and redux when creating this app. You ca
 
 ### DB Design
 
-- Students
+~~- Students
   * have profile info (e.g. name and email)
-  * must be assigned to a campus
+  * must be assigned to a campus~~
 
-- Campuses
+~~- Campuses
   * have info such as a name and image
-  * can have many students assigned (may have none)
+  * can have many students assigned (may have none)~~
 
 ### Views and Functionality
 #### See Wireframes folder for visual
@@ -62,16 +62,16 @@ Use at least sequelize, express, react, and redux when creating this app. You ca
 
 ```
 GET
-- all campuses
-- a campus by id
-- all students
-- a student by id
+~~- all campuses~~
+~~- a campus by id~~
+~~- all students~~
+~~- a student by id~~
 ```
 
 ```
 POST
-- new campus
-- new student
+~~- new campus~~
+~~- new student~~
 ```
 
 ```
