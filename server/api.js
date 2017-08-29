@@ -14,4 +14,5 @@ api.get('/hello', (req, res) => res.send({hello: 'world'}))
 api.use('/campuses', campusRouter)
 api.use('/students', studentRouter)
 
+
 module.exports = api

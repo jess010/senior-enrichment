@@ -16,7 +16,7 @@ module.exports = db.define('Campus', {
     }
   },
 
-  date_opened: {
+  date_added: {
     type: Sequelize.DATE,
     validation: {
       isDate: true,
