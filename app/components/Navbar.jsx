@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-class Navbar extends React.Component {
+class Navbar extends Component {
     constructor(props) {
         super(props)
     }
@@ -19,4 +19,3 @@ class Navbar extends React.Component {
 }
 
 export default Navbar
-
