@@ -3,7 +3,7 @@ var Sequelize = require('sequelize')
 var db = require('../index.js')
 
 
-module.exports = db.define('Student', {
+const Student = db.define('student', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -37,3 +37,5 @@ module.exports = db.define('Student', {
   getterMethods: {},
   setterMethods: {},
 })
+
+module.exports = Student

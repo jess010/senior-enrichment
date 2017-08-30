@@ -3,10 +3,6 @@ const router = express.Router()
 const models = require('../db/models')
 const Campus = models.Campus
 
-// router.get('/', function (req, res, next) {
-//     res.send("hi there - campus-style!")
-// })
-
 router.get('/', function (req, res, next) {
     Campus.findAll({})
     .then(campuses => {
@@ -32,14 +28,25 @@ router.get('/:id', function (req, res, next) {
 })
 
 router.post('/', function (req, res, next) {
-    Campus.create({
-        name: req.body.name,
-        image: req.body.image
-    })
+    Campus.create(req.body)
     .then(values => values[0])
     .then(campus => res.json(campus))
     .catch(next)
 })
+
+router.put('/:id', function (req, res, next) {
+    Campus.findById(req.params.id)
+    .then(campus => campus.update(req.body))
+    .then(() => res.sendStatus(200))
+    .catch(next)
+})
+
+router.delete('/:id', function (req, res, next) {
+
+  Campus.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(204))
+    .catch(next);
+});
 
 module.exports = router
 
