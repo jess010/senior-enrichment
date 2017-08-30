@@ -76,14 +76,14 @@ POST
 
 ```
 PUT
-- updated student info for one student
-- updated campus info for one campus
+~~- updated student info for one student~~
+~~- updated campus info for one campus~~
 ```
 
 ```
 DELETE
-- a campus
-- a student
+~~- a campus~~
+~~- a student~~
 ```
 
 ### How to test functionality without a frontend
