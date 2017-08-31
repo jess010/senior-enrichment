@@ -9,6 +9,7 @@ const User = require('./user')
 const Student = require('./student')
 const Campus = require('./campus')
 
-Campus.belongsTo(Student, { as: 'campus' });
+Campus.belongsTo(Student);
+Student.hasOne(Campus);
 
 module.exports = {User, Student, Campus}

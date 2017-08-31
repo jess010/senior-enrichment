@@ -1,0 +1,22 @@
+body {
+    color: 665544;
+    background-color: d4d0c6;
+    /* font-family: Inconsolata; check out the Google fonts for how to insert this */
+    text-align: center;
+}
+
+.wrapper {
+    width: 720px;
+    float: left;
+    margin: 10px;
+    height: 198px;
+    /* excluded background stuff, don't think I'll need it */
+}
+
+.header {
+    margin: 40px 0px 20px 0px;
+}
+
+.listing {
+    width: 220px;
+}

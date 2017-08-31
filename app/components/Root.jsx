@@ -1,13 +1,26 @@
-import React from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import React, { Component } from 'react'
+// import Navbar from './Navbar.jsx'
+import CampusList from './CampusList.jsx'
+// import store from '../store.jsx'
+// import { fetchCampuses } from '../reducers/campuses.jsx'
+// import { fetchStudents } from '../reducers/students.jsx'
 
-const Root = ({ children }) => (
-  <div id="main" className="container-fluid">
-    <Navbar />
-    { children }
-    <Footer />
-  </div>
-)
+export default class Root extends Component {
 
-export default Root
+    // componentDidMount () {
+    //     const campusesThunk = fetchCampuses();
+    //     const studentsThunk = fetchStudents();
+    //     store.dispatch(campusesThunk);
+    //     store.dispatch(studentsThunk);
+    // }
+
+    render () {
+        return (
+            <div id="main" className="container-fluid">
+                <CampusList />
+            </div>
+        )
+    }
+}
+
+

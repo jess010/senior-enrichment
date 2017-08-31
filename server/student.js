@@ -28,6 +28,7 @@ router.get('/:id', function (req, res, next) {
     .catch(next)
 })
 
+
 router.post('/', function (req, res, next) {
     Student.create({
         name: req.body.name
@@ -41,13 +42,6 @@ router.put('/:id', function (req, res, next) {
     // Assuming that ID is not allowed to be changed by user
     Student.findById(req.params.id)
     .then(student => student.update(req.body))
-    // .then(values => values.updateAttributes({
-    //     name: req.body.name,
-    //     email: req.body.email,
-    //     address: req.body.address,
-    //     phone: req.body.phone,
-    //     dob: req.body.dob,
-    // }))
     .catch(next)
 })
 
