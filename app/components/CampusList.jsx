@@ -23,6 +23,7 @@ export default class CampusList extends Component {
         return (
         <div>
             <h1>Campuses</h1>
+            <NavLink to={'/campuses/add/'}>Add New Campus</NavLink>
             <ul>
                 {this.state.campuses.map(campus => {
                     return (

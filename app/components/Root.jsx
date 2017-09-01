@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-// import Navbar from './Navbar.jsx'
+import Navbar from './Navbar.jsx'
 import CampusList from './CampusList.jsx'
 import Students from './Students.jsx'
 import SingleCampus from './SingleCampus.jsx'
+import NewCampusEntry from './NewCampusEntry.jsx'
 import SingleStudent from './SingleStudent.jsx'
 import store from '../store.jsx'
 import { fetchCampuses } from '../reducers/campuses.jsx'
-import { fetchStudents } from '../reducers/students.jsx'
+import { fetchStudents, deleteStudentRecord } from '../reducers/students.jsx'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 export default class Root extends Component {
@@ -30,8 +31,12 @@ export default class Root extends Component {
         this.unsubscribe()
     }
 
-    deleteStudent () {
-
+    deleteStudent (event) {
+        event.preventDefault()
+        const clickedElement = event.target.value
+        console.log(clickedElement)
+        const deleteStudentThunk = deleteStudentRecord(clickedElement)
+        store.dispatch(deleteStudentThunk)
     }
 
     render () {
@@ -40,14 +45,18 @@ export default class Root extends Component {
         return (
             <div id="main" className="container-fluid">
                 <Router>
-                    <Switch>
-                        <Route path="/campuses/:campusId" component={SingleCampus} />
-                        <Route path="/students/:studentId" component={SingleStudent} />
-                        <Route path="/students/" render={() => <Students students={students} />} />
-                        <Route path="/campuses/" component={CampusList} />
-                        <Route path="/" component={CampusList} />
-                        <Redirect to="/" />
-                    </Switch>
+                    <div>
+                    <Navbar />
+                        <Switch>
+                            <Route path="/campuses/add" component={NewCampusEntry} />
+                            <Route path="/campuses/:campusId" component={SingleCampus} />
+                            <Route path="/students/:studentId" component={SingleStudent} />
+                            <Route path="/students/" render={() => <Students students={students} deleteStudent={this.deleteStudent} />} />
+                            <Route path="/campuses/" component={CampusList} />
+                            <Route path="/" component={CampusList} />
+                            <Redirect to="/" />
+                        </Switch>
+                    </div>
                 </Router>
             </div>
         )

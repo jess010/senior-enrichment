@@ -21,20 +21,19 @@ export default class SingleStudent extends Component {
     render () {
         const studentId = Number(this.props.match.params.studentId)
         const students = this.state.students
-        const student = students.filter(stud => stud.id === studentId)
-        console.log(student)
+        const student = students.filter(stud => stud.id === studentId)[0]
 
         return (
             <div>
-                {students.length &&
-                <div key={student.id}>
-                    <h1>{`Student Profile - ${student.name}`}</h1>
-                    <p>{`Attending Campus: ${students.campus.name}`}</p>
-                    <p>{`Email: ${student.email}`}</p>
-                    <p>{`Address: ${student.address}`}</p>
-                    <p>{`Phone: ${student.phone}`}</p>
-                    <p>{`DOB: ${student.dob}`}</p>
-                </div>
+                {students.length && students[0].campus &&
+                    <div key={student.id}>
+                        <h1>{`Student Profile - ${student.name}`}</h1>
+                        <p>Attending Campus: </p><a href={`/campuses/${student.campusId}`}>{student.campus.name}</a>
+                        <p>{`Email: ${student.email}`}</p>
+                        <p>{`Address: ${student.address}`}</p>
+                        <p>{`Phone: ${student.phone}`}</p>
+                        <p>{`DOB: ${student.dob}`}</p>
+                    </div>
                 }
             </div>
         )

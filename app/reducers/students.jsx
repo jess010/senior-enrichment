@@ -6,6 +6,7 @@ const GET_STUDENTS = 'GET_STUDENTS'
 const GET_STUDENT = 'GET_STUDENT'
 const UPDATE_NAME_ON_STUDENT = 'UPDATE_NAME_ON_STUDENT';
 const UPDATE_CAMPUS_ON_STUDENT = 'UPDATE_CAMPUS_ON_STUDENT';
+const DELETE_STUDENT = 'DELETE_STUDENT'
 
 // Action Creators
 
@@ -33,6 +34,11 @@ export function updateNameOnStudent (name) {
 
 export function updateCampusOnStudent (campusId) {
   const action = { type: UPDATE_CAMPUS_ON_STUDENT, campusId };
+  return action;
+}
+
+export function deleteStudent (studentId) {
+  const action = { type: DELETE_STUDENT, studentId };
   return action;
 }
 
@@ -83,6 +89,20 @@ export function putStudentCampus (newStudentCampus, studentId) {
     }
 }
 
+export function deleteStudentRecord (student, studentId) {
+    return function thunk (dispatch) {
+        const studentUrl = '/api/students/' + studentId
+        return axios.delete(studentUrl)
+        .then(res => res.data)
+        .then(deletedStudent => {
+            const action = deleteStudent(deletedStudent)
+            dispatch(action)
+        })
+        .then(() => res.status(204).redirect('/students/'))
+    }
+}
+
+
 
 // Reducer
 export default function studentsReducer (prevState = [], action) {
@@ -92,9 +112,11 @@ export default function studentsReducer (prevState = [], action) {
         case GET_STUDENT:
           return [...prevState, action.student]
         case UPDATE_NAME_ON_STUDENT:
-            return action.name;  // TODO: Requires more work, defer to 'update student feature'
+            return action.name;  // TODO: Skeleton only, fill out in 'update student feature'
         case UPDATE_CAMPUS_ON_STUDENT:
-            return action.campusId; // TODO: Requires more work, defer to 'update student feature'
+            return action.campusId; // TODO: Skeleton only, fill out in 'update student feature'
+        case DELETE_STUDENT:
+            return [prevState].filter(student => studentId !== student.id);
         default:
           return prevState
     }

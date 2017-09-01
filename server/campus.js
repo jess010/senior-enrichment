@@ -29,7 +29,7 @@ router.get('/:id', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     Campus.create(req.body)
-    .then(values => values[0])
+    // .then(res => values[0])
     .then(campus => res.json(campus))
     .catch(next)
 })

@@ -11,9 +11,9 @@ export default class Navbar extends Component {
         return (
             <nav className="navbar navbar-default">
                 <ul>
-                    <li><NavLink to="Home.jsx">Home</NavLink></li>
-                    <li><NavLink to="Students.jsx">Campuses</NavLink></li>
-                    <li><NavLink to="Students.jsx">Students</NavLink></li>
+                    <li><NavLink to={'/campuses/'}>Home</NavLink></li>
+                    <li><NavLink to={'/campuses/'}>Campuses</NavLink></li>
+                    <li><NavLink to={'/students/'}>Students</NavLink></li>
                 </ul>
             </nav>
         )

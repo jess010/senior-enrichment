@@ -1,44 +1,65 @@
 import React, { Component } from 'react'
-//import store from '../store.jsx'
+import store from '../store'
+import { postCampus } from '../reducers/campuses'
 //import { connect } from 'react-redux'
-import axios from 'axios'
+// import axios from 'axios'
 
 
 export default class NewCampusEntry extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            campus: ''
+            campusName: ''
         }
-        this.addCampus = this.addCampus.bind(this)
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount () {
+    // componentDidMount () {
+
+    // }
+
+    handleChange (event) {
+        const val = event.target.value
+        this.setState({campusName: val})
     }
 
-    addCampus (name) {
-    axios.post('/api/campuses', { name })
-    .then(res => res.data)
-    .then(newCampus => {
-        this.setState(prevState => ({
-            stories: [...prevState.campuses, newCampus]
-        }));
-    })}
+    handleSubmit (event) {
+        event.preventDefault()
+        const name = this.state.campusName
+        store.dispatch(postCampus({ name }))
+    }
+    // addCampus (name) {
+    // //     axios.post('/api/campuses', { name })
+    // //     .then(res => res.data)
+    // //     .then(newCampus => {
+    // //         this.setState(prevState => ({
+    // //             stories: [...prevState.campuses, newCampus]
+    // //         }));
+    // //     })
+    // }
 
     render () {
         return (
         <div>
-            <ul>
-                {this.state.campuses.map(campus => {
-                    <div key={campus.id} className="listing">
-                        <NavLink to={`/campuses/${campus.id}`} activeClassName="active">
-                            <figure><img src={campus.img} />
-                                <figcaption>{campus.name}</figcaption>
-                            </figure>
-                        </NavLink>
-                    </div>
-                })}
-            </ul>
+            <h1>Add A Campus</h1>
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Add A Campus</label>
+                <input
+                  value={this.state.campusName}
+                  onChange={this.handleChange}
+                  className="form-control"
+                  type="text"
+                  name="campusName"
+                  placeholder="Enter campus name"
+                />
+              </div>
+              <div className="form-group">
+                <button type="submit" className="btn btn-default">Create Campus</button>
+              </div>
+            </form>
         </div>
         )
     }

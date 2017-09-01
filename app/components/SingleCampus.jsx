@@ -26,7 +26,7 @@ export default class SingleCampus extends Component {
 
         return (
             <div>
-                {students.length && filteredStudents[0].campus.length &&
+                {students.length &&
                 <div key={campusId}>
                     <h1>{`${filteredStudents[0].campus.name} Campus`}</h1>
                     <div>
