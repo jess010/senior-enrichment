@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-//import store from '../store.jsx'
-//import { connect } from 'react-redux'
-import axios from 'axios'
-
+import store from '../store.jsx'
+// import { connect } from 'react-redux'
+// import axios from 'axios'
 
 export default class CampusList extends Component {
     constructor(props) {
-        super(props)
-        this.state = {
-            campuses: []
-        }
+        super(props);
+        this.state = store.getState();
     }
 
     componentDidMount () {
-        axios.get('api/campuses')
-        .then(res => res.data)
-        .then(campuses => {
-            this.setState({ campuses })
-        })
+        this.unsubscribe = store.subscribe(() => this.setState(store.getState()))
     }
+
+    componentWillUnmount () {
+        this.unsubscribe()
+    }
+
 
     render () {
         return (
@@ -27,18 +25,26 @@ export default class CampusList extends Component {
             <h1>Campuses</h1>
             <ul>
                 {this.state.campuses.map(campus => {
-                    return <div key={campus.id} className="listing">
-                        <figure><img src={campus.image} />
-                            <figcaption>{campus.name}</figcaption>
-                        </figure>
-                    </div>
+                    return (
+                        <div key={campus.id} className="listing">
+                            <NavLink to={`/campuses/${campus.id}`}>
+                                <row>
+                                    <img src={campus.image} />
+                                    <h2>{campus.name}</h2>
+                                </row>
+                            </NavLink>
+                        </div>
+                    )
                 })}
             </ul>
         </div>
         )
     }
-
 }
+
+
+
+
 
 // function mapStateToProps (state) {
 //   return {
@@ -49,3 +55,19 @@ export default class CampusList extends Component {
 // const CampusListContainer = connect(mapStateToProps)(CampusList);
 // export default CampusListContainer;
 
+
+// export default class CampusList extends Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             campuses: []
+//         }
+//     }
+
+//     componentDidMount () {
+//         axios.get('/api/campuses')
+//         .then(res => res.data)
+//         .then(campuses => {
+//             this.setState({ campuses })
+//         })
+//     }

@@ -24,7 +24,7 @@ export function getCampus (campus) {
 // Thunk Creators
 export function fetchCampuses () {
     return function thunk (dispatch) {
-        return axios.get('api/campuses')
+        return axios.get('/api/campuses')
         .then(res => res.data)
         .then(campuses => {
             const action = getCampuses(campuses)
@@ -46,13 +46,12 @@ export function postCampus (campus) {
 
 // Reducer
 export default function campusesReducer (prevState = [], action) {
+
     switch (action.type) {
         case GET_CAMPUSES:
           return action.campuses
-
         case GET_CAMPUS:
           return [...prevState, action.campus]
-
         default:
           return prevState
     }

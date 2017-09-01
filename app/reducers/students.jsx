@@ -39,7 +39,7 @@ export function updateCampusOnStudent (campusId) {
 // Thunk Creators
 export function fetchStudents () {
     return function thunk (dispatch) {
-        return axios.get('api/students')
+        return axios.get('/api/students')
         .then(res => res.data)
         .then(students => {
             const action = getStudents(students)

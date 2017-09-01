@@ -188,17 +188,17 @@ const seed = () =>
   Promise.all(students.map(student =>
     Student.create(student)
   ))
-  .then((ss) => {
-    seededStudents = ss
+  .then((createdStudents) => {
+    seededStudents = createdStudents
   })
   .then(() =>
     Promise.all(campuses.map(campus =>
       Campus.create(campus)
     )
   ))
-  .then((cs) =>
+  .then((createdCampuses) =>
     Promise.all(seededStudents.map(student =>
-      student.setCampus(cs[Math.floor(Math.random() * cs.length)])
+      student.setCampus(createdCampuses[Math.floor(Math.random() * createdCampuses.length)])
     ))
   )
 

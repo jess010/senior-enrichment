@@ -18,5 +18,18 @@ body {
 }
 
 .listing {
-    width: 220px;
+    width: 100px;
+    size: 40px
+}
+
+.image {
+   position: relative;
+   width: 100%; /* for IE 6 */
+}
+
+h2 {
+   position: absolute;
+   top: 200px;
+   left: 0;
+   width: 100%;
 }
