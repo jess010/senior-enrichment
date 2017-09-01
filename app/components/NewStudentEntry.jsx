@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import store from '../store'
-import { postStudent } from '../reducers/campuses'
+import { postStudent } from '../reducers/students'
 //import { connect } from 'react-redux'
 // import axios from 'axios'
 

@@ -30,9 +30,7 @@ router.get('/:id', function (req, res, next) {
 
 
 router.post('/', function (req, res, next) {
-    Student.create({
-        name: req.body.name
-    })
+    Student.create(req.body)
     .then(values => values[0])
     .then(student => res.json(student))
     .catch(next)
