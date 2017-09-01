@@ -89,7 +89,7 @@ export function putStudentCampus (newStudentCampus, studentId) {
     }
 }
 
-export function deleteStudentRecord (student, studentId) {
+export function deleteStudentRecord (studentId) {
     return function thunk (dispatch) {
         const studentUrl = '/api/students/' + studentId
         return axios.delete(studentUrl)
@@ -98,10 +98,9 @@ export function deleteStudentRecord (student, studentId) {
             const action = deleteStudent(deletedStudent)
             dispatch(action)
         })
-        .then(() => res.status(204).redirect('/students/'))
+        // .then(() => res.status(204).redirect('/students/'))
     }
 }
-
 
 
 // Reducer
@@ -116,7 +115,7 @@ export default function studentsReducer (prevState = [], action) {
         case UPDATE_CAMPUS_ON_STUDENT:
             return action.campusId; // TODO: Skeleton only, fill out in 'update student feature'
         case DELETE_STUDENT:
-            return [prevState].filter(student => studentId !== student.id);
+            return [prevState].filter(student => studentId !== student.id); //TODO: work out how to reference student Id on the store
         default:
           return prevState
     }

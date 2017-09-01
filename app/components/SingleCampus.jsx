@@ -20,24 +20,27 @@ export default class SingleCampus extends Component {
 
     render () {
         const campusId = Number(this.props.match.params.campusId)
+        const currentCampus = this.state.campuses.filter(campus => campus.id === campusId)[0]
+        console.log(currentCampus)
         const students = this.state.students
         const filteredStudents = students.filter(student => student.campusId === campusId)
 
 
         return (
             <div>
-                {students.length &&
                 <div key={campusId}>
-                    <h1>{`${filteredStudents[0].campus.name} Campus`}</h1>
+                    <h1>{`${currentCampus.name} Campus`}</h1>
                     <div>
-                        <img src={filteredStudents[0].campus.image} />
-                        <p>{`Campus Name: ${filteredStudents[0].campus.name}`}</p>
-                        <p>{`Date Opened: ${filteredStudents[0].campus.date_added}`}</p>
+                        <img src={currentCampus.image} />
+                        <p>{`Campus Name: ${currentCampus.name}`}</p>
+                        <p>{`Date Opened: ${currentCampus.date_added}`}</p>
                     </div>
                 </div>
-                }
                 <div>
-                    <Students students={filteredStudents} />
+                    { filteredStudents.length
+                        ? <Students students={filteredStudents} />
+                        : <p><em>There are no students currently enrolled at this campus</em></p>
+                    }
                 </div>
             </div>
         )

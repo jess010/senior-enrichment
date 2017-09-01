@@ -4,6 +4,7 @@ import CampusList from './CampusList.jsx'
 import Students from './Students.jsx'
 import SingleCampus from './SingleCampus.jsx'
 import NewCampusEntry from './NewCampusEntry.jsx'
+import NewStudentEntry from './NewStudentEntry.jsx'
 import SingleStudent from './SingleStudent.jsx'
 import store from '../store.jsx'
 import { fetchCampuses } from '../reducers/campuses.jsx'
@@ -31,11 +32,10 @@ export default class Root extends Component {
         this.unsubscribe()
     }
 
-    deleteStudent (event) {
+    deleteStudent () {
         event.preventDefault()
-        const clickedElement = event.target.value
-        console.log(clickedElement)
-        const deleteStudentThunk = deleteStudentRecord(clickedElement)
+        console.log("Delete student has been clicked")
+        const deleteStudentThunk = deleteStudentRecord(id)
         store.dispatch(deleteStudentThunk)
     }
 
@@ -50,6 +50,7 @@ export default class Root extends Component {
                         <Switch>
                             <Route path="/campuses/add" component={NewCampusEntry} />
                             <Route path="/campuses/:campusId" component={SingleCampus} />
+                            <Route path="/students/add" component={NewStudentEntry} />
                             <Route path="/students/:studentId" component={SingleStudent} />
                             <Route path="/students/" render={() => <Students students={students} deleteStudent={this.deleteStudent} />} />
                             <Route path="/campuses/" component={CampusList} />

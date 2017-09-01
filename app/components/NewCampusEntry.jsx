@@ -16,9 +16,6 @@ export default class NewCampusEntry extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    // componentDidMount () {
-
-    // }
 
     handleChange (event) {
         const val = event.target.value
@@ -28,17 +25,12 @@ export default class NewCampusEntry extends Component {
     handleSubmit (event) {
         event.preventDefault()
         const name = this.state.campusName
-        store.dispatch(postCampus({ name }))
+        store.dispatch(postCampus({
+            name,
+            image: '/images/' + Math.floor(Math.random() * 24) + '.png',
+        }))
     }
-    // addCampus (name) {
-    // //     axios.post('/api/campuses', { name })
-    // //     .then(res => res.data)
-    // //     .then(newCampus => {
-    // //         this.setState(prevState => ({
-    // //             stories: [...prevState.campuses, newCampus]
-    // //         }));
-    // //     })
-    // }
+
 
     render () {
         return (
