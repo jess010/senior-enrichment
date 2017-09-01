@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import CampusList from './CampusList.jsx'
 import Students from './Students.jsx'
 import SingleCampus from './SingleCampus.jsx'
-import SingleStudent from './SingleCampus.jsx'
+import SingleStudent from './SingleStudent.jsx'
 import store from '../store.jsx'
 import { fetchCampuses } from '../reducers/campuses.jsx'
 import { fetchStudents } from '../reducers/students.jsx'
@@ -14,6 +14,8 @@ export default class Root extends Component {
     constructor(props) {
         super(props);
         this.state = store.getState();
+
+        this.deleteStudent = this.deleteStudent.bind(this)
     }
 
     componentDidMount () {
@@ -26,6 +28,10 @@ export default class Root extends Component {
 
     componentWillUnmount () {
         this.unsubscribe()
+    }
+
+    deleteStudent () {
+
     }
 
     render () {

@@ -7,7 +7,13 @@ export default function Students (props) {
         <div>
             <h1>Students</h1>
             <ul className="media-list">
-                { props.students.map(student => <li key={student.id} className="student-list">{student.name}</li>
+                { props.students.map(student => {
+                    return ( <div key={student.id}>
+                    <li className="student-list">{student.name}</li>
+                    <button className="btn btn-xs btn-danger remove btn-circle" onClick={props.deleteStudent}>X</button>
+                    </div>
+                    )
+                }
                 )}
             </ul>
         </div>
